@@ -1,19 +1,15 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import os
 
-# Get database URL from environment, default to SQLite for simplicity
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./blog.db")
+# SQLite database URL
+SQLALCHEMY_DATABASE_URL = "sqlite:///./blog.db"
 
-# Handle SQLite specifically (needs check_same_thread)
-if DATABASE_URL.startswith("sqlite"):
-    engine = create_engine(
-        DATABASE_URL,
-        connect_args={"check_same_thread": False}  # Needed for SQLite
-    )
-else:
-    engine = create_engine(DATABASE_URL)
+# Create engine
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL,
+    connect_args={"check_same_thread": False}
+)
 
 # Create session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

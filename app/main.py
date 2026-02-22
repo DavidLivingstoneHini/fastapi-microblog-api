@@ -17,7 +17,7 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# CORS middleware (In production I would've restricted this to specific domains)
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -26,6 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include routers
 app.include_router(users.router)
 app.include_router(posts.router)
 
@@ -46,6 +47,5 @@ async def health_check():
     """Check if API is running"""
     return {
         "status": "healthy",
-        "database": "connected",
-        "timestamp": "import time; time.time()"
+        "database": "connected"
     }
