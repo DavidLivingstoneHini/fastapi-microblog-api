@@ -1,6 +1,6 @@
-# Posts Service – FastAPI Blog API
+# FastAPI Microblog API
 
-A production-oriented REST API built with FastAPI that demonstrates:
+A production oriented REST API built with FastAPI that demonstrates:
 
 - Secure user authentication (Basic Auth)
 - Clean architecture separation
@@ -17,7 +17,7 @@ This project was built as a take-home assessment to showcase backend engineering
 # Run This:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/DavidLivingstoneHini/fastapi-microblog-api
 cd posts-service
 
 python -m venv venv
