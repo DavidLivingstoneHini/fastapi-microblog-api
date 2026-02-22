@@ -17,7 +17,7 @@ This project was built as a take-home assessment to showcase backend engineering
 # Prerequisites
 - Python 3.11+
 Tested with Python 3.14.2 and 3.11.9.
-- 
+- pip
 
 # Run This:
 
