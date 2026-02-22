@@ -147,7 +147,7 @@ This separation ensures:
 
 ---
 
-# 🗄 Database Schema
+# Database Schema
 
 ## Users
 
