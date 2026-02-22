@@ -14,6 +14,11 @@ This project was built as a take-home assessment to showcase backend engineering
 
 ---
 
+# Prerequisites
+- Python 3.11+
+Tested with Python 3.14.2 and 3.11.9.
+- 
+
 # Run This:
 
 ```bash
@@ -149,12 +154,12 @@ This separation ensures:
 - id (Primary Key)
 - title
 - content
-- author_id (Foreign Key → users.id)
+- author_id (Foreign Key -> users.id)
 - created_at
 
 Relationship:
 
-One User → Many Posts
+One User -> Many Posts
 
 ---
 
@@ -300,6 +305,25 @@ For large scale production systems, cursor based pagination would be the preferr
 
 Passwords are hashed using bcrypt via passlib.  
 Plain text passwords are never stored.
+
+
+## 🤔 Why Edit/Delete Endpoints Are Missing
+
+You might notice there are no endpoints to update or delete posts. This was intentional:
+
+1. **Assignment Scope**: The requirements only requested create, read, and list functionality.
+2. **Simplicity & Focus**: Adding more endpoints would distract from the core requirements.
+3. **Production Considerations**: In a real-world application, edit/delete functionality requires additional planning:
+   - Authorization (who can edit or delete a post)
+   - Soft deletes vs hard deletes
+   - Version history or audit logs
+   - Validation of related entities
+
+If this were a production API, I would add:
+
+- `PUT /posts/{id}` — Update a post with proper authorization
+- `DELETE /posts/{id}` — Delete a post, preferably with soft delete
+- and other necessary endpoints
 
 ---
 
