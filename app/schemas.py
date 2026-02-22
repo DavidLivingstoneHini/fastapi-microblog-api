@@ -1,7 +1,8 @@
-from pydantic import BaseModel, EmailStr, Field, validator
-from datetime import datetime
-from typing import Optional, List
 import re
+from datetime import datetime
+from typing import List
+
+from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
 # User Schemas
@@ -9,7 +10,8 @@ class UserBase(BaseModel):
     email: EmailStr
     username: str = Field(..., min_length=3, max_length=50)
 
-    @validator('username')
+    @field_validator('username')
+    @classmethod
     def validate_username(cls, v):
         """Username must be alphanumeric"""
         if not v.isalnum():
@@ -18,9 +20,10 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
-    password: str = Field(..., min_length=8, max_length=100)  # Added max length
+    password: str = Field(..., min_length=8, max_length=100)
 
-    @validator('password')
+    @field_validator('password')
+    @classmethod
     def validate_password(cls, v):
         """Password validation"""
         if len(v) < 8:
@@ -44,19 +47,21 @@ class UserResponse(UserBase):
         from_attributes = True
 
 
-# Post Schemas (unchanged)
+# Post Schemas
 class PostBase(BaseModel):
     title: str = Field(..., min_length=1, max_length=200)
     content: str = Field(..., min_length=1)
 
-    @validator('title')
+    @field_validator('title')
+    @classmethod
     def title_not_empty(cls, v):
         """Ensure title is not just whitespace"""
         if not v or not v.strip():
             raise ValueError('Title cannot be empty')
         return v.strip()
 
-    @validator('content')
+    @field_validator('content')
+    @classmethod
     def content_not_empty(cls, v):
         """Ensure content is not just whitespace"""
         if not v or not v.strip():

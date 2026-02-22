@@ -23,7 +23,7 @@ Tested with Python 3.14.2 and 3.11.9.
 
 ```bash
 git clone https://github.com/DavidLivingstoneHini/fastapi-microblog-api
-cd posts-service
+cd fastapi-microblog-api
 
 python -m venv venv
 

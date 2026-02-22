@@ -17,20 +17,19 @@ def hash_password(password: str) -> str:
     Hash a password safely, handling bcrypt's 72-byte limit
     by pre-hashing with SHA256 if needed
     """
-    # If password is longer than 72 bytes, hash it first
+    # Handling long passwords
     if len(password.encode('utf-8')) > 72:
-        # SHA256 produces a 64-character hex string (32 bytes)
         password = hashlib.sha256(password.encode()).hexdigest()
     return pwd_context.hash(password)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verify password against hash, handling long passwords"""
+    """Verify password against hash, and handling long passwords"""
     # Check if the original password works
     if pwd_context.verify(plain_password, hashed_password):
         return True
 
-    # If not, try with SHA256 pre-hash (for long passwords)
+    # If not, we try with SHA256 pre-hash
     if len(plain_password.encode('utf-8')) > 72:
         pre_hashed = hashlib.sha256(plain_password.encode()).hexdigest()
         return pwd_context.verify(pre_hashed, hashed_password)
