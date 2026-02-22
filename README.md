@@ -112,19 +112,6 @@ This separation ensures:
 
 ---
 
-# Tech Stack
-
-| Component | Technology | Reason |
-|------------|------------|--------|
-| Web Framework | FastAPI | Modern, fast, automatic OpenAPI docs |
-| ORM | SQLAlchemy | Industry standard, DB-agnostic |
-| Database | SQLite | Zero setup, easily replaceable |
-| Validation | Pydantic | Type-safe validation |
-| Auth | Basic Auth | Explicit requirement of assignment |
-| Password Hashing | passlib[bcrypt] | Secure hashing using bcrypt |
-
----
-
 # Features
 
 ## Core Requirements
