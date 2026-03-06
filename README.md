@@ -41,7 +41,7 @@ uvicorn app.main:app --reload
 Then open:
 
 Swagger UI:
-http://localhost:8000/docs
+http://localhost:8000/docs or http://127.0.0.1:8000/docs
 
 ReDoc:
 http://localhost:8000/redoc
@@ -246,7 +246,7 @@ Includes author details in response.
 ## Using Swagger
 
 Visit:
-http://localhost:8000/docs
+http://localhost:8000/docs or http://127.0.0.1:8000/docs
 
 Register a user first, then use the "Authorize" button for Basic Auth.
 
